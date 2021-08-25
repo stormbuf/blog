@@ -17,9 +17,6 @@ jobs:
         with: 
           node-version: 12
 
-      - name: run addVuess
-        run: 'node ./.github/scripts/addVuess.js'
-
       - name: Build and Deploy
         uses: jenkey2011/vuepress-deploy@master
         env:
