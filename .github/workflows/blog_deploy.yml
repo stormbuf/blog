@@ -1,0 +1,24 @@
+name: blog_deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Build and Deploy
+        uses: jenkey2011/vuepress-deploy@master
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          TARGET_REPO: stormbuf/blog
+          TARGET_BRANCH: gh_pages
+          BUILD_SCRIPT: node ./.github/scripts/addVuess.js && yarn && yarn build
+          BUILD_DIR: docs/.vuepress/dist/
+          CLIENTID: ${{secrets.CLIENTID}}
+          CLIENTSECRET: ${{secrets.CLIENTSECRET}}
