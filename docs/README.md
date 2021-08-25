@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /img/b.jpg
+heroImage: /img/me.png
 heroText: stormbuf's blog
 description: 🧑‍💻后端工程师|🍖饮食爱好者|🔍观察者
 actionText: 开始浏览
@@ -19,5 +19,5 @@ footer: © 2021 stormbuf's Blog. Powered by VuePress
 ---
 
 ## 联系方式:
-- e-mail: stormbuf@163.com
+- E-mail: stormbuf@163.com
 - Github: [https://github.com/stormbuf](https://github.com/stormbuf)
