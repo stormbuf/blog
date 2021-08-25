@@ -12,13 +12,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
+      - name: setup-node
+        uses: actions/setup-node@v2
+        with: 
+          node-version: 12
+
+      - name: run addVuess
+        run: 'node ./.github/scripts/addVuess.js'
+
       - name: Build and Deploy
         uses: jenkey2011/vuepress-deploy@master
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           TARGET_REPO: stormbuf/blog
           TARGET_BRANCH: gh_pages
-          BUILD_SCRIPT: node ./.github/scripts/addVuess.js && yarn && yarn build
+          BUILD_SCRIPT: yarn && yarn build
           BUILD_DIR: docs/.vuepress/dist/
           CLIENTID: ${{secrets.CLIENTID}}
           CLIENTSECRET: ${{secrets.CLIENTSECRET}}
