@@ -13,6 +13,9 @@ function fileDisplay(filePath){
         }else{
             //遍历读取到的文件列表
             files.forEach(function(filename){
+                if('README.md' === filename){
+                    continue;
+                }
                 console.log('遍历到的目录: '+filename);
                 //获取当前文件的绝对路径
                 var filedir = path.join(filePath,filename);
