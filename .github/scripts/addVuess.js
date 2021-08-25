@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 
-//解析需要遍历的文件夹，我这以E盘根目录为例
+//解析需要遍历的文件夹
 var filePath = path.resolve('./docs');
 
 
