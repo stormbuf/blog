@@ -1,3 +1,8 @@
+const feed_options = {
+  canonical_base: 'https://stormbuf.top',
+  posts_directories: ['/blog/', '/docs/']
+};
+
 module.exports = {
     head: [
         [
@@ -54,10 +59,8 @@ module.exports = {
               hour12: false
             }
           }
-        ]
+        ],
+        [ 'feed', feed_options ]
       ],
-      feed: {
-        canonical_base: 'http://stormbuf.top/',
-      },
       repo: 'stormbuf/blog'
   }
