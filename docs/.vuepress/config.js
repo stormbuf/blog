@@ -59,8 +59,28 @@ module.exports = {
     ['feed',
       {
         canonical_base: 'https://stormbuf.top/',
-        posts_directories: ['/docs/']
-      }]
+        posts_directories: ['/'],
+        rss2: {
+          enable    : true,
+          file_name : 'rss.xml',
+          head_link : {
+            enable: true,
+            type  : 'application/rss+xml',
+            title : '%%site_title%% RSS Feed',
+          }
+        }
+      }],
+      [
+        'vuepress-plugin-rss',
+        {
+          base_url: '/', // required
+          site_url: 'https://stormbuf.top', // required
+          // filter some post
+          filter: (frontmatter) => { return [true|false] },
+          // How much articles
+          count: 20
+        }
+      ]
   ],
   repo: 'stormbuf/blog'
 }
