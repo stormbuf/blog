@@ -1,4 +1,5 @@
 module.exports = {
+  permalink: "/:year/:month/:day/:slug",
   head: [
     [
       'link', // 设置 favicon.ico，注意图片放在 public 文件夹下
