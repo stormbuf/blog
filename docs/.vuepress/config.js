@@ -46,6 +46,14 @@ module.exports = {
             serviceWorker: true,
             updatePopup: true,
           },
+        ],
+        [
+          '@vuepress/last-updated',
+          {
+            dateOptions:{
+              hour12: false
+            }
+          }
         ]
       ],
       feed: {
