@@ -33,6 +33,10 @@
     "vuepress-plugin-baidu-autopush": "^1.0.1",
     "vuepress-plugin-feed": "^0.1.9",
     "vuepress-plugin-minimal-analytics": "^0.1.4",
-    "vuepress-plugin-rss": "^2.0.0"
+    "vuepress-plugin-rss": "^2.0.0",
+    "lodash": "^4.17.15"
+  },
+  "dependencies": {
+    "@types/lodash.debounce": "^4.0.6"
   }
 }
