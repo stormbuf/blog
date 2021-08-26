@@ -14,13 +14,14 @@ module.exports = {
     // 导航栏配置
     nav: [{ text: "主页", link: "/" },
     { text: "java", link: "/java/" },
-    { text: "数据库", link: "/db/" }
+    { text: "数据库", link: "/db/" },
+    { text: 'RSS', link: 'rss.xml'}
     ]
   },
   plugins: [
     ['@vuepress/back-to-top'], // 返回顶部
     ['@vuepress/nprogress'], // 加载进度条
-    ['@vuepress/medium-zoom'],// 图片缩放
+    ['@vuepress/medium-zoom',true],// 图片缩放
     ['vuepress-plugin-baidu-autopush'],
     ['@vuepress/blog',
       {
@@ -58,29 +59,15 @@ module.exports = {
     ],
     ['feed',
       {
-        canonical_base: 'https://stormbuf.top/',
-        posts_directories: ['/docs/'],
-        rss2: {
-          enable    : true,
-          file_name : 'rss.xml',
-          head_link : {
-            enable: true,
-            type  : 'application/rss+xml',
-            title : '%%site_title%% RSS Feed',
-          }
-        }
-      }],
-      [
-        'vuepress-plugin-rss',
-        {
-          base_url: '/', // required
-          site_url: 'https://stormbuf.top', // required
-          // filter some post
-          filter: (frontmatter) => { return [true|false] },
-          // How much articles
-          count: 20
-        }
-      ]
+        canonical_base: 'https://stormbuf.top',
+        posts_directories: ['/'],
+        feeds: {
+          rss2: { enable: true },
+          atom1: { enable: false },
+          json1: { enable: false },
+        },
+        count: 60
+      }]
   ],
   repo: 'stormbuf/blog'
 }
