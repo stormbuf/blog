@@ -4,7 +4,7 @@ module.exports = {
       'link', // 设置 favicon.ico，注意图片放在 public 文件夹下
       { rel: 'icon', href: '/img/logo.png' }
     ],
-    ['link', { rel: 'manifest', href: '/manifest.json' }]
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['script', { src: "https://www.googletagmanager.com/gtag/js?id=UA-286583-7",async: true}],
     ['script', {},
                 " window.dataLayer = window.dataLayer || [];\
