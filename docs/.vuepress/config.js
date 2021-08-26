@@ -5,6 +5,13 @@ module.exports = {
       { rel: 'icon', href: '/img/logo.png' }
     ],
     ['link', { rel: 'manifest', href: '/manifest.json' }]
+    ['script', { src: "https://www.googletagmanager.com/gtag/js?id=UA-286583-7",async: true}],
+    ['script', {},
+                " window.dataLayer = window.dataLayer || [];\
+                function gtag(){dataLayer.push(arguments);}\
+                gtag('js', new Date());\
+                gtag('config', 'UA-286583-7');"],
+
   ],
   title: 'stormbuf\'s blog',
   description: 'stormbuf 的博客',
@@ -15,7 +22,7 @@ module.exports = {
     nav: [{ text: "主页", link: "/" },
     { text: "java", link: "/java/" },
     { text: "数据库", link: "/db/" },
-    { text: 'RSS', link: 'rss.xml'}
+    { text: 'RSS', link: 'https://stormbuf.top/rss.xml', target: '_self', rel: '', icon: 'reco-rss'}
     ]
   },
   plugins: [
@@ -67,7 +74,16 @@ module.exports = {
           json1: { enable: false },
         },
         count: 60
-      }]
+      }],
+      [
+        'sitemap', 
+        {
+          hostname: 'https://stormbuf.top',
+          dateFormatter: time => {
+            return new Date(time).toISOString()
+          }
+        }
+      ]
   ],
   repo: 'stormbuf/blog'
 }
