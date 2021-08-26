@@ -59,7 +59,7 @@ module.exports = {
     ['feed',
       {
         canonical_base: 'https://stormbuf.top/',
-        posts_directories: ['/'],
+        posts_directories: ['/docs/'],
         rss2: {
           enable    : true,
           file_name : 'rss.xml',
