@@ -31,9 +31,9 @@
 
 <script>
 import debounce from 'lodash.debounce'
-import { type } from '../../../util'
-import TitleBadgeMixin from '../../../mixins/titleBadge'
-import Posts from '../../../mixins/posts'
+import { type } from '../util'
+import TitleBadgeMixin from '../mixins/titleBadge'
+import Posts from '../mixins/posts'
 
 export default {
   mixins: [TitleBadgeMixin,Posts],
@@ -94,7 +94,7 @@ export default {
 </script>
 
 <style lang='stylus'>
-@require '../../../styles/wrapper.styl'
+@require '../styles/wrapper.styl'
 
 .archives-page
   .theme-vdoing-wrapper
