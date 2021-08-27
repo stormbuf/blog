@@ -18,7 +18,7 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           TARGET_REPO: stormbuf/blog
           TARGET_BRANCH: gh_pages
-          BUILD_SCRIPT: yarn && yarn build
+          BUILD_SCRIPT: node ./.github/scripts/addVuess.js && yarn && yarn build
           BUILD_DIR: docs/.vuepress/dist/
           CLIENTID: ${{secrets.CLIENTID}}
           CLIENTSECRET: ${{secrets.CLIENTSECRET}}
