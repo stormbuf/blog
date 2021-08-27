@@ -24,6 +24,7 @@ module.exports = {
     { text: "java", link: "/java/" },
     { text: "数据库", link: "/db/" },
     {text: "归档",link: "/archivesPage/"},
+    {text: "友链",link: "/friends/"},
     { text: 'RSS', link: 'https://stormbuf.top/rss.xml', target: '_self', rel: '', icon: 'reco-rss'}
     ]
   },
@@ -63,6 +64,12 @@ module.exports = {
       {
         dateOptions: {
           hour12: false
+        },
+        transformer: (timestamp, lang) => {
+          // 不要忘了安装 moment
+          const moment = require('moment')
+          moment.locale(lang)
+          return moment(timestamp).format('YYYY-MM-DD HH:mm')
         }
       }
     ],

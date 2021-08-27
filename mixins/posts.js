@@ -9,8 +9,6 @@ export default {
       return sortPosts(this.$filterPosts)
     },
     $sortPostsByDate () { // 仅按时间排序的文章数据
-      console(this.$filterPosts.length)
-      
       return sortPostsByDate(this.$filterPosts)
     },
     $groupPosts () { // 按分类和标签分组的文章数据

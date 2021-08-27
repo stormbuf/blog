@@ -33,9 +33,10 @@
 import debounce from 'lodash.debounce'
 import { type } from '../../../util'
 import TitleBadgeMixin from '../../../mixins/titleBadge'
+import Posts from '../../../mixins/posts'
 
 export default {
-  mixins: [TitleBadgeMixin],
+  mixins: [TitleBadgeMixin,Posts],
   data () {
     return {
       postsList: [],
@@ -68,7 +69,7 @@ export default {
     getPageData () {
       const currentPage = this.currentPage
       const perPage = this.perPage
-      this.postsList = this.postsList.concat(this.$sortPostsByDate.slice((currentPage - 1) * perPage, currentPage * perPage))
+      this.postsList = this.postsList.concat(this.$sortPostsByDate)
     },
     loadmore () {
       this.currentPage = this.currentPage + 1
@@ -79,16 +80,14 @@ export default {
       if (!item) {
         return
       }
-      const { frontmatter: { date } } = item
-      if (date && type(date) === 'string') {
-        return date.split(" ")[0].slice(0, 4)
-      }
+      const { lastUpdated } = item
+      let date = new Date(lastUpdated)
+      return date.getUTCFullYear()
     },
     getDate (item) {
-      const { frontmatter: { date } } = item
-      if (date && type(date) === 'string') {
-        return date.split(" ")[0].slice(5, 10)
-      }
+      const { lastUpdated } = item
+      let date = new Date(lastUpdated)
+      return (date.getMonth() +1)+'-'+(date.getDate())
     }
   }
 }
