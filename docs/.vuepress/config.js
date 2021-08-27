@@ -65,6 +65,12 @@ module.exports = {
       {
         dateOptions: {
           hour12: false
+        },
+        transformer: (timestamp, lang) => {
+          // 不要忘了安装 moment
+          const moment = require('moment')
+          moment.locale(lang)
+          return moment(timestamp).utcOffset(8).format('YYYY-MM-DD HH:mm')
         }
       }
     ],
