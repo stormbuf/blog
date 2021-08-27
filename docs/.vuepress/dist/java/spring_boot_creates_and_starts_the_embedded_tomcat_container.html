@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>源码解析：spring boot 创建内嵌Tomcat容器并启动 | stormbuf&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/img/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://www.googletagmanager.com/gtag/js?id=UA-286583-7" async="true"></script>
+    <script> window.dataLayer = window.dataLayer || [];                function gtag(){dataLayer.push(arguments);}                gtag('js', new Date());                gtag('config', 'UA-286583-7');</script>
+    <link rel="alternate" type="application/rss+xml" href="https://stormbuf.top/rss.xml" title="stormbuf&#39;s blog RSS Feed">
+    <meta name="description" content="stormbuf 的博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.1ac74570.css" as="style"><link rel="preload" href="/assets/js/app.586101e3.js" as="script"><link rel="preload" href="/assets/js/2.f36e1316.js" as="script"><link rel="preload" href="/assets/js/17.4e5e0b7f.js" as="script"><link rel="preload" href="/assets/js/4.efbf2f21.js" as="script"><link rel="prefetch" href="/assets/js/10.b52431e5.js"><link rel="prefetch" href="/assets/js/11.270e6b2b.js"><link rel="prefetch" href="/assets/js/12.b1b481c0.js"><link rel="prefetch" href="/assets/js/13.478c3a4c.js"><link rel="prefetch" href="/assets/js/14.d198872d.js"><link rel="prefetch" href="/assets/js/15.26731815.js"><link rel="prefetch" href="/assets/js/16.6195d00e.js"><link rel="prefetch" href="/assets/js/18.88b6cd8b.js"><link rel="prefetch" href="/assets/js/19.dddb20bb.js"><link rel="prefetch" href="/assets/js/3.738acb67.js"><link rel="prefetch" href="/assets/js/5.08c1d800.js"><link rel="prefetch" href="/assets/js/6.928faf93.js"><link rel="prefetch" href="/assets/js/7.99ec363d.js"><link rel="prefetch" href="/assets/js/8.6c1407ab.js"><link rel="prefetch" href="/assets/js/9.702cc898.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.1ac74570.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">stormbuf's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/java/" class="nav-link router-link-active">
+  java
+</a></div><div class="nav-item"><a href="/db/" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/archivesPage/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><a href="/friends/" class="nav-link">
+  友链
+</a></div><div class="nav-item"><a href="https://stormbuf.top/rss.xml" target="_self" class="nav-link external">
+  RSS
+  <!----></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/java/" class="nav-link router-link-active">
+  java
+</a></div><div class="nav-item"><a href="/db/" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/archivesPage/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><a href="/friends/" class="nav-link">
+  友链
+</a></div><div class="nav-item"><a href="https://stormbuf.top/rss.xml" target="_self" class="nav-link external">
+  RSS
+  <!----></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>源码解析：spring boot 创建内嵌Tomcat容器并启动</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/java/spring_boot_creates_and_starts_the_embedded_tomcat_container.html#_1-applicationcontext创建" class="sidebar-link">1. ApplicationContext创建</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/java/spring_boot_creates_and_starts_the_embedded_tomcat_container.html#_2-创建servlet-容器" class="sidebar-link">2. 创建Servlet 容器</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/java/spring_boot_creates_and_starts_the_embedded_tomcat_container.html#refresh-方法定义的流程" class="sidebar-link">refresh()方法定义的流程</a></li></ul></li><li><a href="/java/spring_boot_creates_and_starts_the_embedded_tomcat_container.html#_3-启动容器" class="sidebar-link">3. 启动容器</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="源码解析-spring-boot-创建内嵌tomcat容器并启动"><a href="#源码解析-spring-boot-创建内嵌tomcat容器并启动" class="header-anchor">#</a> 源码解析：spring boot 创建内嵌Tomcat容器并启动</h1> <blockquote><p>基于版本spring boot 2.1.5.RELEASE</p></blockquote> <p>spring boot 启动时会调用<code>SpringApplication#run(String... args)</code>方法，一切都从这里开始。</p> <h1 id="整体流程"><a href="#整体流程" class="header-anchor">#</a> 整体流程</h1> <h2 id="_1-applicationcontext创建"><a href="#_1-applicationcontext创建" class="header-anchor">#</a> 1. ApplicationContext创建</h2> <p>spring boot会调用<code>org.springframework.boot.SpringApplication#createApplicationContext</code>方法，根据<code>webApplicationType</code>值创建<code>ApplicationContext</code>。</p> <p>一般web环境都是创建<code>AnnotationConfigServletWebServerApplicationContext</code>，也只有当前应用为网络应用时才会启动内嵌的 Servlet 容器。（Servlet 容器创建及启动的实现在<code>ServletWebServerApplicationContext</code>中，而<code>AnnotationConfigServletWebServerApplicationContext</code>继承了该类）。</p> <h2 id="_2-创建servlet-容器"><a href="#_2-创建servlet-容器" class="header-anchor">#</a> 2. 创建Servlet 容器</h2> <p><code>run</code>方法中，spring boot会通过<code>refreshContext()</code>方法调用<code>ApplicationContext</code>的<code>refresh()</code>方法（该方法由<code>ApplicationContext</code>实例的父类<code>AbstractApplicationContext</code>提供实现，是模板方法的应用，里面定义了<code>ApplicationContext</code>的启动流程）。</p> <h3 id="refresh-方法定义的流程"><a href="#refresh-方法定义的流程" class="header-anchor">#</a> refresh()方法定义的流程</h3> <div class="language-java extra-class"><pre class="language-java"><code>  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>startupShutdownMonitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Prepare this context for refreshing.</span>
+      <span class="token function">prepareRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// Tell the subclass to refresh the internal bean factory.</span>
+      <span class="token class-name">ConfigurableListableBeanFactory</span> beanFactory <span class="token operator">=</span> <span class="token function">obtainFreshBeanFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// Prepare the bean factory for use in this context.</span>
+      <span class="token function">prepareBeanFactory</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Allows post-processing of the bean factory in context subclasses.</span>
+        <span class="token function">postProcessBeanFactory</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Invoke factory processors registered as beans in the context.</span>
+        <span class="token function">invokeBeanFactoryPostProcessors</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Register bean processors that intercept bean creation.</span>
+        <span class="token function">registerBeanPostProcessors</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Initialize message source for this context.</span>
+        <span class="token function">initMessageSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Initialize event multicaster for this context.</span>
+        <span class="token function">initApplicationEventMulticaster</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Initialize other special beans in specific context subclasses.</span>
+        <span class="token function">onRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Check for listener beans and register them.</span>
+        <span class="token function">registerListeners</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Instantiate all remaining (non-lazy-init) singletons.</span>
+        <span class="token function">finishBeanFactoryInitialization</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Last step: publish corresponding event.</span>
+        <span class="token function">finishRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
+</code></pre></div><p>子类<code>ServletWebServerApplicationContext</code> 重写的<code>onRefresh()</code>方法被调用。</p> <p>这个方法里通过<code>createWebServer()</code>创建了 <code>Servlet</code>容器（默认为 Tomcat），并添加 IoC 容器中的 <code>Servlet</code>、<code>Filter</code>和 <code>EventListener</code>至 <code>Servlet</code>上下文。</p> <h2 id="_3-启动容器"><a href="#_3-启动容器" class="header-anchor">#</a> 3. 启动容器</h2> <p>子类<code>ServletWebServerApplicationContext</code> 重写的<code>finishRefresh()</code>方法被调用。</p> <p>这个方法里通过<code>startWebServer()</code>调用<code>WebServer#start</code>方法启动创建的容器。</p> <h1 id="createwebserver-方法"><a href="#createwebserver-方法" class="header-anchor">#</a> createWebServer 方法</h1> <p><code>org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext#createWebServer</code></p> <p>以tomcat容器为例：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">createWebServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">WebServer</span> webServer <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>webServer<span class="token punctuation">;</span>
+    <span class="token comment">// 获取被加载都ioc容器中的TomcatServletWebServerFactory</span>
+    <span class="token class-name">ServletContext</span> servletContext <span class="token operator">=</span> <span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>webServer <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> servletContext <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token class-name">ServletWebServerFactory</span> factory <span class="token operator">=</span> <span class="token function">getWebServerFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// 生成一个TomcatWebServer实例</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>webServer <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">getWebServer</span><span class="token punctuation">(</span><span class="token function">getSelfInitializer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>servletContext <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token function">getSelfInitializer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">onStartup</span><span class="token punctuation">(</span>servletContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ServletException</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ApplicationContextException</span><span class="token punctuation">(</span><span class="token string">&quot;Cannot initialize servlet context&quot;</span><span class="token punctuation">,</span>
+            ex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">initPropertySources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><p>spring boot在<code>org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory#getWebServer</code></p> <p>给tomcat设置了相关的配置。</p> <p>其中<code>org.apache.catalina.connector</code>的实例化给Tomcat引入了默认配置。</p> <p>源码路径：</p> <ol><li><p><code>org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory#getWebServer</code></p></li> <li><p><code>Connector connector = new Connector(this.protocol);</code></p></li> <li><p><code>Class&lt;?&gt; clazz = Class.forName(protocolHandlerClassName);</code></p></li> <li><p><code>org.apache.coyote.http11.Http11NioProtocol</code></p></li> <li><p><code>org.apache.coyote.AbstractProtocol</code></p></li> <li><p><code>org.apache.coyote.AbstractProtocol#endpoint</code>默认配置保存在这个类中。</p></li></ol> <p><strong>maxThreads</strong>: 用于接收和处理client端请求的最大线程数，默认200</p> <p><strong>acceptCount</strong>: tomcat 线程池所有线程忙碌时，等待队列的最长长度。默认100</p> <p><strong>connectionTimeout</strong>：每个http请求的读取超时时间。默认2000ms</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">2021-08-25 18:24</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.586101e3.js" defer></script><script src="/assets/js/2.f36e1316.js" defer></script><script src="/assets/js/17.4e5e0b7f.js" defer></script><script src="/assets/js/4.efbf2f21.js" defer></script>
+  </body>
+</html>

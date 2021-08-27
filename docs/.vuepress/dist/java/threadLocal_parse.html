@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ThreadLocal解析 | stormbuf&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/img/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://www.googletagmanager.com/gtag/js?id=UA-286583-7" async="true"></script>
+    <script> window.dataLayer = window.dataLayer || [];                function gtag(){dataLayer.push(arguments);}                gtag('js', new Date());                gtag('config', 'UA-286583-7');</script>
+    <link rel="alternate" type="application/rss+xml" href="https://stormbuf.top/rss.xml" title="stormbuf&#39;s blog RSS Feed">
+    <meta name="description" content="stormbuf 的博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.1ac74570.css" as="style"><link rel="preload" href="/assets/js/app.586101e3.js" as="script"><link rel="preload" href="/assets/js/2.f36e1316.js" as="script"><link rel="preload" href="/assets/js/18.88b6cd8b.js" as="script"><link rel="preload" href="/assets/js/4.efbf2f21.js" as="script"><link rel="prefetch" href="/assets/js/10.b52431e5.js"><link rel="prefetch" href="/assets/js/11.270e6b2b.js"><link rel="prefetch" href="/assets/js/12.b1b481c0.js"><link rel="prefetch" href="/assets/js/13.478c3a4c.js"><link rel="prefetch" href="/assets/js/14.d198872d.js"><link rel="prefetch" href="/assets/js/15.26731815.js"><link rel="prefetch" href="/assets/js/16.6195d00e.js"><link rel="prefetch" href="/assets/js/17.4e5e0b7f.js"><link rel="prefetch" href="/assets/js/19.dddb20bb.js"><link rel="prefetch" href="/assets/js/3.738acb67.js"><link rel="prefetch" href="/assets/js/5.08c1d800.js"><link rel="prefetch" href="/assets/js/6.928faf93.js"><link rel="prefetch" href="/assets/js/7.99ec363d.js"><link rel="prefetch" href="/assets/js/8.6c1407ab.js"><link rel="prefetch" href="/assets/js/9.702cc898.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.1ac74570.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">stormbuf's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/java/" class="nav-link router-link-active">
+  java
+</a></div><div class="nav-item"><a href="/db/" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/archivesPage/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><a href="/friends/" class="nav-link">
+  友链
+</a></div><div class="nav-item"><a href="https://stormbuf.top/rss.xml" target="_self" class="nav-link external">
+  RSS
+  <!----></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/java/" class="nav-link router-link-active">
+  java
+</a></div><div class="nav-item"><a href="/db/" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/archivesPage/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><a href="/friends/" class="nav-link">
+  友链
+</a></div><div class="nav-item"><a href="https://stormbuf.top/rss.xml" target="_self" class="nav-link external">
+  RSS
+  <!----></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>ThreadLocal解析</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/java/threadLocal_parse.html#原理" class="sidebar-link">原理</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/java/threadLocal_parse.html#threadlocal-为什么会内存泄漏-2" class="sidebar-link">ThreadLocal 为什么会内存泄漏</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="threadlocal解析"><a href="#threadlocal解析" class="header-anchor">#</a> ThreadLocal解析</h1> <h1 id="threadlocal-是什么"><a href="#threadlocal-是什么" class="header-anchor">#</a> <code>ThreadLocal</code> 是什么</h1> <p><code>ThreadLocal</code> 是 JDK <code>java.lang</code> 包中的一个用来实现实现线程之间数据隔离的工具。</p> <blockquote><p>ThreadLocal 这个类提供线程局部变量，这些变量与其他正常的变量的不同之处在于，每一个访问该变量的线程在其内部都有一个独立的初始化的变量副本；ThreadLocal 实例变量通常采用private static 在类中修饰。
+只要 ThreadLocal 的变量能被访问，并且线程存活，那每个线程都会持有 ThreadLocal 变量的副本。当一个线程结束时，它所持有的所有 ThreadLocal 相对的实例副本都可被回收。</p></blockquote> <p>当使用 <code>ThreadLocal</code> 维护变量时，<code>ThreadLocal</code> 为每个使用该变量的线程提供<strong>独立的变量副本</strong>，所以每一个线程都可以独立地改变自己的副本，而<strong>不会影响</strong>其它线程所对应的副本。</p> <h1 id="threadlocal-使用"><a href="#threadlocal-使用" class="header-anchor">#</a> <code>ThreadLocal</code> 使用</h1> <div class="language-java extra-class"><pre class="language-java"><code>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span></span><span class="token class-name">CountDownLatch</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyThreadLocalStringDemo</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">ThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> threadLocal <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">getString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> threadLocal<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">setString</span><span class="token punctuation">(</span><span class="token class-name">String</span> string<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        threadLocal<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> threads <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+        <span class="token class-name">MyThreadLocalStringDemo</span> demo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyThreadLocalStringDemo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CountDownLatch</span> countDownLatch <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CountDownLatch</span><span class="token punctuation">(</span>threads<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> threads<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">Thread</span> thread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+                demo<span class="token punctuation">.</span><span class="token function">setString</span><span class="token punctuation">(</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>demo<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                countDownLatch<span class="token punctuation">.</span><span class="token function">countDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">&quot;thread - &quot;</span> <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            thread<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><p>这样子，当在一个线程中使用 <code>ThreadLocal</code> 变量时，线程都会创建一份该变量的副本供该线程使用。</p> <h1 id="使用场景"><a href="#使用场景" class="header-anchor">#</a> 使用场景</h1> <p>要注意的是，<code>ThreadLocal</code> 并不是为了解决共享变量的共享数据的线程安全的。</p> <p>相反的，<code>ThreadLocal</code> 是为了共享变量的数据隔离的方案。</p> <p>在一些场景中，虽然多线程使用共享变量，但对这个共享变量之间的操作在逻辑上是没有依赖关系的，但是实际操作上不同线程之间对共享变量的操作让其他线程受到了影响。这时候就需要使用 <code>ThreadLocal</code> 提供数据隔离了。</p> <p>当很多线程需要多次使用同一个对象，
+并且需要该对象具有相同初始化值的时候最适合使用 <code>ThreadLocal</code> 。
+最常见的 <code>ThreadLocal</code> 使用场景为用来解决 <strong>数据库连接</strong>、<strong>Session管理</strong>等。</p> <h1 id="threadlocal-为什么会内存泄漏"><a href="#threadlocal-为什么会内存泄漏" class="header-anchor">#</a> <code>ThreadLocal</code> 为什么会内存泄漏</h1> <h2 id="原理"><a href="#原理" class="header-anchor">#</a> 原理</h2> <p><img src="https://raw.githubusercontent.com/stormbuf/blog/main/img/resources9456652004320593558.png" alt=""></p> <p><strong>这个 Map 是个抽象的 Map 并不是 java.util 中的 Map</strong> <strong>ThreadLocalMap(即上图的Map)的生命周期跟Thread一样长</strong></p> <blockquote><p>ThreadLocal
+ThreadLocal的实现是这样的：每个Thread 维护一个 ThreadLocalMap 映射表，这个映射表的 key 是 ThreadLocal实例本身，value 是真正需要存储的 Object。
+也就是说 ThreadLocal 本身并不存储值，它只是作为一个 key 来让线程从 ThreadLocalMap 获取 value。值得注意的是图中的虚线，表示 ThreadLocalMap 是使用 ThreadLocal 的弱引用作为 Key 的，弱引用的对象在 GC 时会被回收。</p></blockquote> <h2 id="threadlocal-为什么会内存泄漏-2"><a href="#threadlocal-为什么会内存泄漏-2" class="header-anchor">#</a> <code>ThreadLocal</code> 为什么会内存泄漏</h2> <p><code>ThreadLocalMap</code> 使用 <code>ThreadLocal</code> 的弱引用作为 <code>key</code> ，</p> <p>如果一个 <code>ThreadLocal</code> 没有外部强引用来引用它，</p> <p>那么系统 <code>GC</code> 的时候，这个 <code>ThreadLocal</code> 势必会被回收，</p> <p>这样一来， <code>ThreadLocalMap</code> 中就会出现 <strong>key</strong> 为 <strong>null</strong> 的 <strong>Entry</strong> ，</p> <p>就没有办法访问这些 <strong>key</strong> 为 <strong>null</strong> 的 <strong>Entry</strong> 的 <strong>value</strong> ，</p> <p>如果当前线程再迟迟不结束的话，</p> <p>这些 <strong>key</strong> 为 <strong>null</strong> 的 <strong>Entry</strong>的 <strong>value</strong> 就会一直存在一条强引用链：</p> <p><code>Thread Ref -&gt; Thread -&gt; ThreaLocalMap -&gt; Entry -&gt; value</code> 永远无法回收，</p> <p>当线程迟迟无法结束，或者线程属于线程池，就可能造成内存泄漏。</p> <p>其实，<code>ThreadLocalMap</code> 的设计中已经考虑到这种情况，也加上了一些防护措施：在<code>ThreadLocal</code> 的 <code>get()</code>,<code>set()</code>,<code>remove()</code> 的时候都会清除线程 <code>ThreadLocalMap</code> 里所有 <strong>key</strong> 为 <strong>null</strong> 的 <strong>value</strong> 。</p> <p>但是这些被动的预防措施并不能保证下列情况不会内存泄漏：</p> <ul><li><p>使用 <code>static</code> 的 <code>ThreadLocal</code>，延长了 <code>ThreadLocal</code> 的生命周期，可能导致的内存泄漏。</p></li> <li><p>分配使用了 <code>ThreadLocal</code> 又不再调用 <code>get()</code> , <code>set()</code> , <code>remove()</code> 方法，那么就会导致内存泄漏。</p></li></ul></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">2021-08-27 15:56</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.586101e3.js" defer></script><script src="/assets/js/2.f36e1316.js" defer></script><script src="/assets/js/18.88b6cd8b.js" defer></script><script src="/assets/js/4.efbf2f21.js" defer></script>
+  </body>
+</html>
