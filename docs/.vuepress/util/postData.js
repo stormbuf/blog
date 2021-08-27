@@ -7,6 +7,7 @@ import { type, compareDate } from './index'
 export function filterPosts (posts) {
   var patt = /^.*README.md$/
   posts = posts.filter(item => {
+    window.console.log(item.lastUpdated)
     const { frontmatter: { pageComponent, article, home },relativePath } = item
     return !(pageComponent || article === false || home === true || patt.test(relativePath)) // 存在页面组件、article字段为false，以及首页
   })
