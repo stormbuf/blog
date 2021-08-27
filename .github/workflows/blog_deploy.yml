@@ -19,3 +19,5 @@ jobs:
           BUILD_DIR: docs/.vuepress/dist/
           CLIENTID: ${{secrets.CLIENTID}}
           CLIENTSECRET: ${{secrets.CLIENTSECRET}}
+          USERNAME: ${{secrets.USERNAME}}
+          PASSWORD: ${{secrets.PASSWORD}}
