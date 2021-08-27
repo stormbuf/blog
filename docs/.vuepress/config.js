@@ -69,6 +69,7 @@ module.exports = {
           // 不要忘了安装 moment
           const moment = require('moment')
           moment.locale(lang)
+          moment.tz.setDefault("Asia/Shanghai")
           return moment(timestamp).format('YYYY-MM-DD HH:mm')
         }
       }
