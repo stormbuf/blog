@@ -5,7 +5,7 @@ import { type, compareDate } from './index'
  * @param {Array} posts 所有文章数据
  */
 export function filterPosts (posts) {
-  var patt = /^.*README.md$/
+  var patt = /^.*(README|friends).md$/
   posts = posts.filter(item => {
     const { frontmatter: { pageComponent, article, home },relativePath } = item
     return !(pageComponent || article === false || home === true || patt.test(relativePath)) // 存在页面组件、article字段为false，以及首页
