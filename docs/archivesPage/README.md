@@ -1,6 +1,6 @@
 ---
 archivesPage: true
-title: 归档
+title: timeline
 permalink: /archives/
 article: false
 sidebar: false

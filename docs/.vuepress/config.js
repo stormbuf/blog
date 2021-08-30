@@ -24,7 +24,7 @@ module.exports = {
     nav: [{ text: "主页", link: "/" },
     { text: "java", link: "/java/" },
     { text: "数据库", link: "/db/" },
-    {text: "归档",link: "/archivesPage/"},
+    {text: "timeline",link: "/archivesPage/"},
     {text: "友链",link: "/friends/"},
     { text: 'RSS', link: 'https://stormbuf.top/rss.xml', target: '_self', rel: '', icon: 'reco-rss'}
     ]
