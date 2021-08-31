@@ -16,6 +16,8 @@ meta:
   - name: keywords
     content: stormbuf blog coding
 footer: © 2021 stormbuf's Blog. Powered by VuePress
+feed:
+  enable: false
 ---
 
 ## 联系方式:

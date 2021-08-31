@@ -1,3 +1,7 @@
+---
+feed:
+  enable: false
+---
 # java
 ## java 基础
 - [ThreadLocal解析](threadLocal_parse.md)
