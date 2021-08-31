@@ -3,6 +3,8 @@ friends: true
 title: 友情链接
 permalink: /friends
 sidebar: false
+feed:
+  enable: false
 ---
 
 ::: tip 友情链接
