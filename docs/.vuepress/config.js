@@ -32,7 +32,7 @@ module.exports = {
     sidebar: 'auto',
     // 导航栏配置
     nav: [{
-      text: "主页",
+      text: "home",
       link: "/"
     },
     {
@@ -56,7 +56,7 @@ module.exports = {
       link: "/archivesPage/"
     },
     {
-      text: "友链",
+      text: "friends",
       link: "/friends/"
     },
     {
