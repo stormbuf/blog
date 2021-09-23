@@ -36,14 +36,18 @@ module.exports = {
       link: "/"
     },
     {
-      text: "program lang",
+      text: "program",
       items: [{
         text: "java",
-        link: "/programLang/java/"
+        link: "/program/java/"
       },
       {
         text: "golang",
-        link: "/programLang/golang/"
+        link: "/program/golang/"
+      },
+      {
+        text: "分布式",
+        link: "/program/distributed/"
       }
       ]
     },
