@@ -7,7 +7,7 @@
 
 示例
 
-```
+```go
 func main() {
   stop := make(chan bool)
 
@@ -50,7 +50,7 @@ Context 是官方提供的另一个控制并发的方法。同样与select搭配
 
 ### 接口分析
 
-```
+```go
 type Context interface {
   // 返回 context 被取消的时间，多配合定时取消/超时取消
   // 若没有设置取消时间，则 ok == false
@@ -81,7 +81,7 @@ go 内置了2个默认实现。通常作为context的根节点。
 
 #### 继承context的方法
 
-```
+```go
 func WithCancel(parent Context) (ctx Context, cancel CancelFunc)
 func WithDeadline(parent Context, deadline time.Time) (Context, CancelFunc)
 func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc)
