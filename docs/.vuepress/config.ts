@@ -76,74 +76,50 @@ module.exports = {
     ['@vuepress/back-to-top'], // 返回顶部
     ['@vuepress/nprogress'], // 加载进度条
     ['@vuepress/medium-zoom', true], // 图片缩放
-    ['vuepress-plugin-baidu-autopush'],
-    ['@vuepress/blog',
-      {
-        sitemap: {
-          hostname: 'https://stormbuf.top'
-        },
-      },
-    ],
-    ['@vssue/vuepress-plugin-vssue',
-      {
-        // 设置 `platform` 而不是 `api`
-        platform: 'github',
-        locale: 'zh',
-        owner: "stormbuf", //对应 仓库 的拥有者帐号或者团队
-        repo: "blog", // 用来存储评论的 仓库
-        clientId: process.env.CLIENTID, // OAuth App 的 client id
-        clientSecret: process.env.CLIENTSECRET, // OAuth App 的 client secret 
-        autoCreateIssue: true //自动创建评论
-      }
-    ],
-    [
-      '@vuepress/pwa',
-      {
-        serviceWorker: true,
-        updatePopup: true,
-      },
-    ],
-    [
-      '@vuepress/last-updated',
-      {
-        dateOptions: {
-          hour12: false
-        },
-        transformer: (timestamp, lang) => {
-          // 不要忘了安装 moment
-          const moment = require('moment')
-          moment.locale(lang)
-          return moment(timestamp).utcOffset(8).format('YYYY-MM-DD HH:mm')
-        }
-      }
-    ],
-    ['feed',
-      {
-        canonical_base: 'https://stormbuf.top',
-        posts_directories: ['/'],
-        feeds: {
-          rss2: {
-            enable: true
-          },
-          atom1: {
-            enable: false
-          },
-          json1: {
-            enable: false
-          },
-        },
-        count: 60
-      }
-    ],
-    [
-      'sitemap',
-      {
-        hostname: 'https://stormbuf.top',
-        dateFormatter: time => {
-          return new Date(time).toISOString()
-        }
-      }
-    ]
+    // ['@vssue/vuepress-plugin-vssue',
+    //   {
+    //     // 设置 `platform` 而不是 `api`
+    //     platform: 'github',
+    //     locale: 'zh',
+    //     owner: "stormbuf", //对应 仓库 的拥有者帐号或者团队
+    //     repo: "blog", // 用来存储评论的 仓库
+    //     clientId: process.env.CLIENTID, // OAuth App 的 client id
+    //     clientSecret: process.env.CLIENTSECRET, // OAuth App 的 client secret 
+    //     autoCreateIssue: true //自动创建评论
+    //   }
+    // ],
+    // [
+    //   '@vuepress/last-updated',
+    //   {
+    //     dateOptions: {
+    //       hour12: false
+    //     },
+    //     transformer: (timestamp, lang) => {
+    //       // 不要忘了安装 moment
+    //       const moment = require('moment')
+    //       moment.locale(lang)
+    //       return moment(timestamp).utcOffset(8).format('YYYY-MM-DD HH:mm')
+    //     }
+    //   }
+    // ],
+    // ['feed',
+    //   {
+    //     canonical_base: 'https://stormbuf.top',
+    //     posts_directories: ['/'],
+    //     feeds: {
+    //       rss2: {
+    //         enable: true
+    //       },
+    //       atom1: {
+    //         enable: false
+    //       },
+    //       json1: {
+    //         enable: false
+    //       },
+    //     },
+    //     count: 60
+    //   }
+    // ],
   ],
   repo: 'stormbuf/blog'
 }
