@@ -1,6 +1,5 @@
 module.exports = {
   // permalink: "/:year/:month/:day/:slug",
-  cache: true,
   head: [
     [
       'link', // 设置 favicon.ico，注意图片放在 public 文件夹下
@@ -31,13 +30,13 @@ module.exports = {
     logo: '',
     sidebar: 'auto',
     // 导航栏配置
-    nav: [{
+    navbar: [{
       text: "home",
       link: "/"
     },
     {
       text: "program",
-      items: [{
+      children: [{
         text: "java",
         link: "/program/java/"
       },

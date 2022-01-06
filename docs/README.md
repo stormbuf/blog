@@ -2,9 +2,11 @@
 home: true
 heroImage: /img/me.png
 heroText: stormbuf's blog
-description: 🧑‍💻后端工程师|🍖肉食爱好者|🔍观察者
-actionText: 开始浏览
-actionLink: /archivesPage/
+tagline:  🧑‍💻后端工程师|🍖肉食爱好者|🔍观察者
+actions:
+  - text: 开始浏览
+    link: /archivesPage/
+    type: primary
 features:
 - title: 一个解决问题的人
   details: 不要把自己局限在程序员，要把自己定位为一个解决问题的人，多尝试。
