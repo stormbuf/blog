@@ -1384,6 +1384,15 @@
     "@vuepress/core" "2.0.0-beta.32"
     execa "^5.1.1"
 
+"@vuepress/plugin-google-analytics@^2.0.0-beta.32":
+  version "2.0.0-beta.32"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-google-analytics/-/plugin-google-analytics-2.0.0-beta.32.tgz#c60f3f7867fd524478368842e07aa1408e8cc9fc"
+  integrity sha512-vQPJpzt0n0IQq37W+CO8hkVgkYHri3YbSMLlccIaDwJiKhMcx9D4GdmOo2J3G4bT5bYGmyynhJqTMoU5HORm6Q==
+  dependencies:
+    "@vuepress/client" "2.0.0-beta.32"
+    "@vuepress/core" "2.0.0-beta.32"
+    "@vuepress/utils" "2.0.0-beta.32"
+
 "@vuepress/plugin-medium-zoom@2.0.0-beta.32":
   version "2.0.0-beta.32"
   resolved "https://registry.yarnpkg.com/@vuepress/plugin-medium-zoom/-/plugin-medium-zoom-2.0.0-beta.32.tgz#2e595e4a929070a809952af563fb3650030dac00"
@@ -1448,6 +1457,27 @@
     register-service-worker "^1.7.2"
     vue "^3.2.24"
     workbox-build "^6.4.2"
+
+"@vuepress/plugin-search@^2.0.0-beta.32":
+  version "2.0.0-beta.32"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-search/-/plugin-search-2.0.0-beta.32.tgz#9397e71d739ef782875451a252c0595e1be90b0d"
+  integrity sha512-9vB0mKG5806M5pMoV6Y5bVx8LesGULxWDyvnQ1tUIXCG9Q8nS272PFGxoCV/ntKv/X2+msTwPpTjCiHAaXmqEQ==
+  dependencies:
+    "@vuepress/client" "2.0.0-beta.32"
+    "@vuepress/core" "2.0.0-beta.32"
+    "@vuepress/shared" "2.0.0-beta.32"
+    "@vuepress/utils" "2.0.0-beta.32"
+    chokidar "^3.5.2"
+    vue "^3.2.24"
+    vue-router "^4.0.12"
+
+"@vuepress/plugin-shiki@^2.0.0-beta.32":
+  version "2.0.0-beta.32"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-shiki/-/plugin-shiki-2.0.0-beta.32.tgz#589c924c92231774b0b3df43dec8aa8d604bb883"
+  integrity sha512-JLM0mpurH5kcey0SjzmGZTMHVAGUv9xlH0YvQNeVSFm0SxpVWcHaFjMN4F6IEx8K9Tb7QAgI7YjHKcuwXtJjww==
+  dependencies:
+    "@vuepress/core" "2.0.0-beta.32"
+    shiki "^0.9.14"
 
 "@vuepress/plugin-theme-data@2.0.0-beta.32":
   version "2.0.0-beta.32"
@@ -2952,6 +2982,11 @@ json5@^2.1.2, json5@^2.2.0:
   dependencies:
     minimist "^1.2.5"
 
+jsonc-parser@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.0.0.tgz#abdd785701c7e7eaca8a9ec8cf070ca51a745a22"
+  integrity sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==
+
 jsonfile@^6.0.1:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-6.1.0.tgz#bc55b2634793c679ec6403094eb13698a6ec0aae"
@@ -3596,6 +3631,24 @@ shebang-regex@^3.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
+shiki@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/shiki/-/shiki-0.10.0.tgz#85f21ecfa95b377ff64db6c71442c22c220e9540"
+  integrity sha512-iczxaIYeBFHTFrQPb9DVy2SKgYxC4Wo7Iucm7C17cCh2Ge/refnvHscUOxM85u57MfLoNOtjoEFUWt9gBexblA==
+  dependencies:
+    jsonc-parser "^3.0.0"
+    vscode-oniguruma "^1.6.1"
+    vscode-textmate "5.2.0"
+
+shiki@^0.9.14:
+  version "0.9.15"
+  resolved "https://registry.yarnpkg.com/shiki/-/shiki-0.9.15.tgz#2481b46155364f236651319d2c18e329ead6fa44"
+  integrity sha512-/Y0z9IzhJ8nD9nbceORCqu6NgT9X6I8Fk8c3SICHI5NbZRLdZYFaB233gwct9sU0vvSypyaL/qaKvzyQGJBZSw==
+  dependencies:
+    jsonc-parser "^3.0.0"
+    vscode-oniguruma "^1.6.1"
+    vscode-textmate "5.2.0"
+
 side-channel@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/side-channel/-/side-channel-1.0.4.tgz#efce5c8fdc104ee751b25c58d4290011fa5ea2cf"
@@ -3947,6 +4000,16 @@ vite@^2.7.1:
     rollup "^2.59.0"
   optionalDependencies:
     fsevents "~2.3.2"
+
+vscode-oniguruma@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/vscode-oniguruma/-/vscode-oniguruma-1.6.1.tgz#2bf4dfcfe3dd2e56eb549a3068c8ee39e6c30ce5"
+  integrity sha512-vc4WhSIaVpgJ0jJIejjYxPvURJavX6QG41vu0mGhqywMkQqulezEqEQ3cO3gc8GvcOpX6ycmKGqRoROEMBNXTQ==
+
+vscode-textmate@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/vscode-textmate/-/vscode-textmate-5.2.0.tgz#01f01760a391e8222fe4f33fbccbd1ad71aed74e"
+  integrity sha512-Uw5ooOQxRASHgu6C7GVvUxisKXfSgW4oFlO+aa+PAkgmH89O3CXxEEzNRNtHSqtXFTl0nAC1uYj0GMSH27uwtQ==
 
 vssue@^1.4.8:
   version "1.4.8"

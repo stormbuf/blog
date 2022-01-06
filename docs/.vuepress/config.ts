@@ -1,3 +1,7 @@
+// import * as shiki from 'shiki'
+
+// const t = shiki.loadTheme('./my-theme.json')
+
 module.exports = {
   // permalink: "/:year/:month/:day/:slug",
   head: [
@@ -29,6 +33,7 @@ module.exports = {
   themeConfig: {
     logo: '',
     sidebar: 'auto',
+    contributors: false,
     // 导航栏配置
     navbar: [{
       text: "home",
@@ -62,19 +67,38 @@ module.exports = {
       text: "friends",
       link: "/friends/"
     },
-    {
-      text: 'RSS',
-      link: 'https://stormbuf.top/rss.xml',
-      target: '_self',
-      rel: '',
-      icon: 'reco-rss'
-    }
+    // {
+    //   text: 'RSS',
+    //   link: 'https://stormbuf.top/rss.xml',
+    //   target: '_self',
+    //   rel: '',
+    //   icon: 'reco-rss'
+    // }
     ]
   },
   plugins: [
     ['@vuepress/back-to-top'], // 返回顶部
     ['@vuepress/nprogress'], // 加载进度条
     ['@vuepress/medium-zoom', true], // 图片缩放
+    [
+      '@vuepress/plugin-google-analytics',
+      {
+        id: 'G-Z9H790F79H',
+      },
+    ],
+    [
+      '@vuepress/plugin-search',
+      {
+        hotKeys: [],
+        maxSuggestions: 10
+      },
+    ],
+    [
+      '@vuepress/plugin-shiki',
+      {
+        theme: 'github-dark'
+      }
+    ]
     // ['@vssue/vuepress-plugin-vssue',
     //   {
     //     // 设置 `platform` 而不是 `api`
