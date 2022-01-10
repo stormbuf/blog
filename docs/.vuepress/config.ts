@@ -101,24 +101,13 @@ module.exports = {
     //     }
     //   }
     // ],
-    // ['feed',
-    //   {
-    //     canonical_base: 'https://stormbuf.top',
-    //     posts_directories: ['/'],
-    //     feeds: {
-    //       rss2: {
-    //         enable: true
-    //       },
-    //       atom1: {
-    //         enable: false
-    //       },
-    //       json1: {
-    //         enable: false
-    //       },
-    //     },
-    //     count: 60
-    //   }
-    // ],
+    ['@stormbuf/vuepress-plugin-rss',
+      {
+        websiteDomain: 'https://stormbuf.top',
+        count: 60,
+        content: false
+      }
+    ],
   ],
   repo: 'stormbuf/blog'
 }
