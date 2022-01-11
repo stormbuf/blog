@@ -1,5 +1,7 @@
 // import * as shiki from 'shiki'
 
+import path from "path";
+
 // const t = shiki.loadTheme('./my-theme.json')
 
 module.exports = {
@@ -67,13 +69,13 @@ module.exports = {
       text: "friends",
       link: "/friends/"
     },
-    // {
-    //   text: 'RSS',
-    //   link: 'https://stormbuf.top/rss.xml',
-    //   target: '_self',
-    //   rel: '',
-    //   icon: 'reco-rss'
-    // }
+    {
+      text: 'RSS',
+      link: 'https://stormbuf.top/rss.xml',
+      target: '_self',
+      rel: '',
+      icon: 'reco-rss'
+    }
     ]
   },
   plugins: [
@@ -98,7 +100,13 @@ module.exports = {
       {
         theme: 'github-dark'
       }
-    ]
+    ],
+    [
+      '@vuepress/register-components',
+      {
+        componentsDir: path.resolve(__dirname, './components'),
+      },
+    ],
     // ['@vssue/vuepress-plugin-vssue',
     //   {
     //     // 设置 `platform` 而不是 `api`

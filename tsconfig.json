@@ -4,22 +4,28 @@
     "target": "ES2019",                       /* 编译目标ES版本*/
     "module": "commonjs",                     /* 编译目标模块系统*/
     // "lib": [],                             /* 编译过程中需要引入的库文件列表*/
-    "declaration": true,                      /* 编译时创建声明文件 */
     "outDir": "dist",                         /* ts编译输出目录 */
-    "rootDir": "src",                         /* ts编译根目录. */
+    "rootDir": "docs",                         /* ts编译根目录. */
     // "importHelpers": true,                 /* 从tslib导入辅助工具函数(如__importDefault)*/
-    "strict": true,                           /* 严格模式开关 等价于noImplicitAny、strictNullChecks、strictFunctionTypes、strictBindCallApply等设置true */
-    "noUnusedLocals": true,                   /* 未使用局部变量报错*/
-    "noUnusedParameters": true,               /* 未使用参数报错*/
-    "noImplicitReturns": true,                /* 有代码路径没有返回值时报错*/
-    "noFallthroughCasesInSwitch": true,       /* 不允许switch的case语句贯穿*/
+    "checkJs": true, // 报告 javascript 文件中的错误
+    "strict": true,
+    /* Enable all strict type-checking options. */
+    "noImplicitAny": false, // 在表达式和声明上有隐含的 any类型时报错
+    "strictNullChecks": true, // 启用严格的 null 检查
+    "noImplicitThis": false, // 当 this 表达式值为 any 类型的时候，生成一个错误
+    /* 额外的检查 */
+    "noUnusedLocals": true, // 有未使用的变量时，抛出错误
+    "noUnusedParameters": false, // 有未使用的参数时，抛出错误
+    "noImplicitReturns": true, // 并不是所有函数里的代码都有返回值时，抛出错误
+    "noFallthroughCasesInSwitch": true, // 报告 switch 语句的 fallthrough 错误。（即，不允许 switch 的 case 语句贯穿）
+    "declaration": true, // 生成相应的 '.d.ts' 文件
+    "sourceMap": true, // 生成相应的 '.map' 文件
     "moduleResolution": "node",               /* 模块解析策略 */
-    "typeRoots": [                            /* 要包含的类型声明文件路径列表*/
-      "./typings",
-      "./node_modules/@types"
-      ],                      
-    "allowSyntheticDefaultImports": false,    /* 允许从没有设置默认导出的模块中默认导入，仅用于提示，不影响编译结果*/
-    "esModuleInterop": false                  /* 允许编译生成文件时，在代码中注入工具类(__importDefault、__importStar)对ESM与commonjs混用情况做兼容处理*/
+    "baseUrl": "./", // 用于解析非相对模块名称的基目录
+    "types": [ /* 要包含的类型声明文件路径列表*/
+      "./typings"
+    ],                     
+    "esModuleInterop": true                  /* 允许编译生成文件时，在代码中注入工具类(__importDefault、__importStar)对ESM与commonjs混用情况做兼容处理*/
 
   },
   "include": [                                /* 需要编译的文件 */

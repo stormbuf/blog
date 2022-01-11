@@ -1,4 +1,5 @@
 <template>
+<div>test 123</div>
   <div class="custom-page">
     <div>
       <h1>
@@ -9,7 +10,7 @@
         {{ this.$page.title }}
       </h1>
       <ul>
-        <template v-for="(item, index) in postsList">
+        <template v-for="(item, index) in postsList" :key="index">
           <li
             class="year"
             v-if="(year = getYear(index)) !== getYear(index - 1)"
@@ -17,7 +18,7 @@
           >
             <h2>{{ year }}</h2>
           </li>
-          <li :key="index">
+          <li>
             <router-link :to="item.path">
               <span>{{ getDate(item) }}</span>
               {{ item.title }}
@@ -29,23 +30,25 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import debounce from 'lodash.debounce'
-import { type } from '../util'
+// import * as type  from '../util'
 import TitleBadgeMixin from '../mixins/titleBadge'
 import Posts from '../mixins/posts'
 
-export default {
+export default defineComponent({
   mixins: [TitleBadgeMixin,Posts],
   data () {
     return {
       postsList: [],
-
+      
       perPage: 80, // 每页长
       currentPage: 1// 当前页
     }
   },
   created () {
+    console.log('see pages: '+JSON.stringify(this))
     this.getPageData()
   },
   mounted () {
@@ -67,8 +70,9 @@ export default {
   },
   methods: {
     getPageData () {
-      const currentPage = this.currentPage
-      const perPage = this.perPage
+      // const currentPage = this.currentPage
+      // const perPage = this.perPage
+      console.log("test1")
       this.postsList = this.postsList.concat(this.$sortPostsByDate)
     },
     loadmore () {
@@ -90,7 +94,7 @@ export default {
       return (date.getMonth() +1)+'-'+(date.getDate())
     }
   }
-}
+})
 </script>
 
 <style lang='stylus'>

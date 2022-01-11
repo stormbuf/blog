@@ -76,7 +76,7 @@ export function resolvePage (pages, rawPath, base) {
   return {}
 }
 
-function resolvePath (relative, base, append) {
+function resolvePath (relative, base, append=false) {
   const firstChar = relative.charAt(0)
   if (firstChar === '/') {
     return relative
@@ -273,7 +273,7 @@ export function getTimeNum (post) {
   let dateStr = post.lastUpdated
   let date = new Date(dateStr)
   console.log(dateStr)
-  if (date == "Invalid Date" && dateStr) { // 修复new Date()在Safari下出现Invalid Date的问题
+  if (dateStr) { // 修复new Date()在Safari下出现Invalid Date的问题
     date = new Date(dateStr.replace(/-/g, '/'))
   }
   return date.getTime()
