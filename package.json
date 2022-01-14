@@ -15,6 +15,7 @@
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
     "@vue/cli-plugin-typescript": "~5.0.0-rc.1",
+    "@vuepress/client": "^2.0.0-beta.33",
     "@vuepress/plugin-google-analytics": "^2.0.0-beta.32",
     "@vuepress/plugin-pwa": "^2.0.0-beta.32",
     "@vuepress/plugin-pwa-popup": "^2.0.0-beta.32",

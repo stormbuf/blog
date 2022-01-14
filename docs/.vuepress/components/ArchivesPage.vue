@@ -34,11 +34,13 @@
 import { defineComponent } from 'vue'
 import debounce from 'lodash.debounce'
 // import * as type  from '../util'
-import TitleBadgeMixin from '../mixins/titleBadge'
-import Posts from '../mixins/posts'
+// import TitleBadgeMixin from '../mixins/titleBadge'
+// import Posts from '../mixins/posts'
+import {useSiteData} from '@vuepress/client'
+const siteData = useSiteData()
 
 export default defineComponent({
-  mixins: [TitleBadgeMixin,Posts],
+  // mixins: [TitleBadgeMixin,Posts],
   data () {
     return {
       postsList: [],
@@ -46,6 +48,10 @@ export default defineComponent({
       perPage: 80, // 每页长
       currentPage: 1// 当前页
     }
+  },
+  setup(){
+    
+    console.log("see siteData: "+JSON.stringify(siteData))
   },
   created () {
     console.log('see pages: '+JSON.stringify(this))
