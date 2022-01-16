@@ -1,10 +1,9 @@
-// import * as shiki from 'shiki'
-
 import path from "path";
+import { defineUserConfig } from 'vuepress'
+import type { DefaultThemeOptions } from 'vuepress'
 
-// const t = shiki.loadTheme('./my-theme.json')
-
-module.exports = {
+export default  defineUserConfig<DefaultThemeOptions>({
+  theme: path.resolve(__dirname, './theme'),
   // permalink: "/:year/:month/:day/:slug",
   head: [
     [
@@ -73,8 +72,7 @@ module.exports = {
       text: 'RSS',
       link: 'https://stormbuf.top/rss.xml',
       target: '_self',
-      rel: '',
-      icon: 'reco-rss'
+      rel: ''
     }
     ]
   },
@@ -141,5 +139,4 @@ module.exports = {
       }
     ],
   ],
-  repo: 'stormbuf/blog'
-}
+})

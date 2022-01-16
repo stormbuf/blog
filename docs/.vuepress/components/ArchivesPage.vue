@@ -1,5 +1,4 @@
 <template>
-<div>test 123</div>
   <div class="custom-page">
     <div>
       <h1>
@@ -33,14 +32,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import debounce from 'lodash.debounce'
-// import * as type  from '../util'
-// import TitleBadgeMixin from '../mixins/titleBadge'
-// import Posts from '../mixins/posts'
-import {useSiteData} from '@vuepress/client'
-const siteData = useSiteData()
+import * as archives from '../theme/archivesData'
 
 export default defineComponent({
-  // mixins: [TitleBadgeMixin,Posts],
   data () {
     return {
       postsList: [],
@@ -49,12 +43,8 @@ export default defineComponent({
       currentPage: 1// 当前页
     }
   },
-  setup(){
-    
-    console.log("see siteData: "+JSON.stringify(siteData))
-  },
   created () {
-    console.log('see pages: '+JSON.stringify(this))
+    archives.archivesData
     this.getPageData()
   },
   mounted () {
@@ -78,7 +68,6 @@ export default defineComponent({
     getPageData () {
       // const currentPage = this.currentPage
       // const perPage = this.perPage
-      console.log("test1")
       this.postsList = this.postsList.concat(this.$sortPostsByDate)
     },
     loadmore () {
