@@ -1,3 +1,6 @@
+import * as fs from 'fs/promises'
+import json from './archivesPageData.json'
+
 export class ArchivesPage {
 
     title: string
@@ -11,15 +14,9 @@ export class ArchivesPage {
     }
 }
 
-// const archivesData: ArchivesPage[]= []
-
-export const archivesData = {
-    data: ArchivesPage[] = []
-}
-
-
 export function sortPostsByDate () {
-    console.log("see archivesData:"+JSON.stringify(archivesData))
+    let archivesData: ArchivesPage[] = JSON.parse(json)
+    console.log('see archivesPageData:'+ archivesData)
     archivesData.sort((pre,next)=>{
         return next.updatedTime-pre.updatedTime
     })

@@ -1,10 +1,9 @@
-import type { ThemeObject, Page } from '@vuepress/core'
-import { json } from 'stream/consumers';
-import { archivesData, ArchivesPage,sortPostsByDate } from './archivesData'
-import { GitPluginPageData } from './types';
-// import { path } from '@vuepress/utils'
+import type { ThemeObject, Page,App } from '@vuepress/core'
+import * as fs from 'fs/promises'
+import { ArchivesPage } from './archivesData'
+import { GitPluginPageData } from './types'
 
-var flag: boolean = true;
+const archivesPageData: ArchivesPage[] = []
 
 const localTheme: ThemeObject = {
     name: 'vuepress-theme-local',
@@ -19,12 +18,14 @@ const localTheme: ThemeObject = {
             return
         }
         var data: ArchivesPage = new ArchivesPage(page.title, page.path, git.updatedTime)
-        archivesData.push(data)
+        archivesPageData.push(data)
     },
-    onPrepared: () => {
-        console.log("see data: " + JSON.stringify(sortPostsByDate()))
-
+    onPrepared: (app: App) => {
+        // app.writeTemp('archivesPageData.js',`export const archivesPageData = ${JSON.stringify(archivesPageData)}`)
+        fs.writeFile('./archivesPageData.json',JSON.stringify(archivesPageData))
     }
 }
+
+export {archivesPageData}
 
 export default localTheme

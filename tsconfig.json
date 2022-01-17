@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     // "incremental": true,                   /* 增量编译 提高编译速度*/
-    "target": "ES2019",                       /* 编译目标ES版本*/
+    "target": "ES2020",                       /* 编译目标ES版本*/
     "module": "commonjs",                     /* 编译目标模块系统*/
     // "lib": [],                             /* 编译过程中需要引入的库文件列表*/
     "outDir": "dist",                         /* ts编译输出目录 */

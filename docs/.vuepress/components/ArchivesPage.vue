@@ -37,7 +37,6 @@ export default defineComponent({
     }
   },
   created () {
-    console.log("created: "+JSON.stringify(this.$site))
     this.getPageData()
   },
   mounted () {
@@ -62,7 +61,6 @@ export default defineComponent({
       // const currentPage = this.currentPage
       // const perPage = this.perPage
       this.postsList = this.postsList.concat(archives.sortPostsByDate())
-      console.log("see postsList: "+JSON.stringify(this.postsList))
     },
     loadmore () {
       this.currentPage = this.currentPage + 1
