@@ -1,19 +1,12 @@
 <template>
   <div class="custom-page">
     <div>
-      <h1>
-        <img
-          :src="currentBadge"
-          v-if="$themeConfig.titleBadge === false ? false : true"
-        />
-        {{ this.$page.title }}
-      </h1>
       <ul>
         <template v-for="(item, index) in postsList" :key="index">
           <li
             class="year"
             v-if="(year = getYear(index)) !== getYear(index - 1)"
-            :key="index + $sortPostsByDate.length"
+            :key="index + archives.sortPostsByDate().length"
           >
             <h2>{{ year }}</h2>
           </li>
@@ -44,13 +37,13 @@ export default defineComponent({
     }
   },
   created () {
-    archives.archivesData
+    console.log("created: "+JSON.stringify(this.$site))
     this.getPageData()
   },
   mounted () {
 
     window.addEventListener('scroll', debounce(() => {
-      if (this.postsList.length < this.$sortPostsByDate.length) {
+      if (this.postsList.length < archives.sortPostsByDate().length) {
         const docEl = document.documentElement
         const docBody = document.body
         const scrollTop = docEl.scrollTop || docBody.scrollTop;
@@ -68,7 +61,8 @@ export default defineComponent({
     getPageData () {
       // const currentPage = this.currentPage
       // const perPage = this.perPage
-      this.postsList = this.postsList.concat(this.$sortPostsByDate)
+      this.postsList = this.postsList.concat(archives.sortPostsByDate())
+      console.log("see postsList: "+JSON.stringify(this.postsList))
     },
     loadmore () {
       this.currentPage = this.currentPage + 1
@@ -79,13 +73,13 @@ export default defineComponent({
       if (!item) {
         return
       }
-      const { lastUpdated } = item
-      let date = new Date(lastUpdated)
+      const { updatedTime } = item
+      let date = new Date(updatedTime)
       return date.getUTCFullYear()
     },
     getDate (item) {
-      const { lastUpdated } = item
-      let date = new Date(lastUpdated)
+      const { updatedTime } = item
+      let date = new Date(updatedTime)
       return (date.getMonth() +1)+'-'+(date.getDate())
     }
   }

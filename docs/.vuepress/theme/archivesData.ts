@@ -1,6 +1,3 @@
-
-export const archivesData: ArchivesPage[] = []
-
 export class ArchivesPage {
 
     title: string
@@ -12,6 +9,21 @@ export class ArchivesPage {
         this.path = path
         this.updatedTime = updatedTime
     }
+}
+
+// const archivesData: ArchivesPage[]= []
+
+export const archivesData = {
+    data: ArchivesPage[] = []
+}
+
+
+export function sortPostsByDate () {
+    console.log("see archivesData:"+JSON.stringify(archivesData))
+    archivesData.sort((pre,next)=>{
+        return next.updatedTime-pre.updatedTime
+    })
+    return archivesData
 }
 
 

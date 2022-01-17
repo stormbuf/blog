@@ -1,6 +1,6 @@
 import type { ThemeObject, Page } from '@vuepress/core'
 import { json } from 'stream/consumers';
-import { archivesData, ArchivesPage } from './archivesData'
+import { archivesData, ArchivesPage,sortPostsByDate } from './archivesData'
 import { GitPluginPageData } from './types';
 // import { path } from '@vuepress/utils'
 
@@ -22,7 +22,7 @@ const localTheme: ThemeObject = {
         archivesData.push(data)
     },
     onPrepared: () => {
-        console.log("see data: " + JSON.stringify(archivesData))
+        console.log("see data: " + JSON.stringify(sortPostsByDate()))
 
     }
 }
