@@ -1,5 +1,4 @@
-import type { ThemeObject, Page,App } from '@vuepress/core'
-import * as fs from 'fs/promises'
+import type { ThemeObject, Page, App } from '@vuepress/core'
 import { ArchivesPage } from './archivesData'
 import { GitPluginPageData } from './types'
 
@@ -21,11 +20,8 @@ const localTheme: ThemeObject = {
         archivesPageData.push(data)
     },
     onPrepared: (app: App) => {
-        // app.writeTemp('archivesPageData.js',`export const archivesPageData = ${JSON.stringify(archivesPageData)}`)
-        fs.writeFile('./archivesPageData.json',JSON.stringify(archivesPageData))
+        app.writeTemp('storeData.ts', `export const archivesPageData: any = ${JSON.stringify(archivesPageData)}`)
     }
 }
-
-export {archivesPageData}
 
 export default localTheme
