@@ -2,3 +2,5 @@
 hello world!
 
 I'm fine.
+
+<comment></comment>
