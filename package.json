@@ -10,7 +10,7 @@
     "build": "vuepress build docs"
   },
   "devDependencies": {
-    "@stormbuf/vuepress-plugin-rss": "0.1.0",
+    "@stormbuf/vuepress-plugin-rss": "0.2.2",
     "@types/node": "^17.0.8",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",

@@ -1013,10 +1013,10 @@
   resolved "https://registry.npm.taobao.org/@sideway/pinpoint/download/@sideway/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
   integrity sha1-z/j/rcNyrSn9P3gneusp5jLMcN8=
 
-"@stormbuf/vuepress-plugin-rss@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.npmmirror.com/@stormbuf/vuepress-plugin-rss/download/@stormbuf/vuepress-plugin-rss-0.1.0.tgz#88b13defa3029c5243ed98401b3284fbe17f32a1"
-  integrity sha512-Qlcx/qu6QtCXPZ1tZb/zGN0s4MlfgtS9Ma55YJ8qbMr6QFez3v/WfoAqlnhfbXq0xdQ/ZEa0skEoXOM8utYnSA==
+"@stormbuf/vuepress-plugin-rss@0.2.2":
+  version "0.2.2"
+  resolved "https://registry.npmjs.org/@stormbuf/vuepress-plugin-rss/-/vuepress-plugin-rss-0.2.2.tgz#85a1d6afa80669a85b6aee8000f5eba8002bc50a"
+  integrity sha512-8bI265/dtY2KiuWpttWyh6hEok+QUM0t68IizBuAd3yUKHUCI1ceJJlG3dAKgC1vxCYLSKZXrqHh5rFCIETvtQ==
   dependencies:
     "@types/node" "16.11.7"
     "@vuepress/core" "2.0.0-beta.32"
