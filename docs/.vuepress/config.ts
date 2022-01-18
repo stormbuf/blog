@@ -2,7 +2,7 @@ import path from "path";
 import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 
-export default  defineUserConfig<DefaultThemeOptions>({
+export default defineUserConfig<DefaultThemeOptions>({
   theme: path.resolve(__dirname, './theme'),
   // permalink: "/:year/:month/:day/:slug",
   head: [
@@ -121,7 +121,9 @@ export default  defineUserConfig<DefaultThemeOptions>({
       {
         websiteDomain: 'https://stormbuf.top',
         count: 60,
-        content: false
+        content: false,
+        generatePath: ['.*(html|htm)'],
+        ignorePath: ['/404.html', '/404.htm','/HelloWorld.html']
       }
     ],
   ],
