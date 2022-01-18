@@ -17,7 +17,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       rel: 'manifest',
       href: '/manifest.json'
     }],
-    ['script', {},
+    ['script', {async: true},
       "var _hmt=_hmt||[];(function(){var hm=document.createElement(\"script\");hm.src=\"https://hm.baidu.com/hm.js?36884888f7a05e80a42de77a45873e51\";var s=document.getElementsByTagName(\"script\")[0];s.parentNode.insertBefore(hm,s)})();"
     ],
 
