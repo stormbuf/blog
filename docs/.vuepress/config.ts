@@ -17,16 +17,6 @@ export default defineUserConfig<DefaultThemeOptions>({
       rel: 'manifest',
       href: '/manifest.json'
     }],
-    ['script', {
-      src: "https://www.googletagmanager.com/gtag/js?id=UA-286583-7",
-      async: true
-    }],
-    ['script', {},
-      " window.dataLayer = window.dataLayer || [];\
-                function gtag(){dataLayer.push(arguments);}\
-                gtag('js', new Date());\
-                gtag('config', 'UA-286583-7');"
-    ],
 
   ],
   title: 'stormbuf\'s blog',
