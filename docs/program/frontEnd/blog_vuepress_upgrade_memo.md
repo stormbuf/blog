@@ -14,9 +14,9 @@
 
 前端的生态重复造轮子情况比较多，而且更新换代非常快，所以干脆从主流比较新的技术栈开始入手学习。
 
-目前我的blog使用的是vuepress 框架，底层使用的vue 2、js、webpack。
+目前我的blog使用的是 vuepress 框架，底层使用的 vue2、js、webpack。
 
-恰好该框架开发了vuepress 2版本，该版本采用了 vue 3、ts、vite，所以我决定通过升级blog框架来入门前端。
+恰好该框架开发了 vuepress 2.x 版本，该版本采用了 vue3、ts、vite，所以我决定通过升级 blog 框架来入门前端。
 
 ## 前置知识点学习来源
 
@@ -37,11 +37,11 @@ vue3:
 
 ## 升级
 
-从 `main` 分支切出一个升级分支`feat/vuepress_upgrade`。升级完成再切换回去。
+从 `main` 分支切出一个升级分支`feat/vuepress_upgrade`。升级完成再合并回去。
 
-### 升级vuepress  依赖
+### 升级 vuepress 依赖
 
-由于vuepress 1.x 与 vuepress 2.x 有许多不兼容的地方，一个一个踩坑替换过于麻烦 ，所以我记录下使用的插件。然后卸载 vuepress 1.x 的依赖，再重新安装vuepress 2.x 依赖。
+由于 vuepress 1.x 与 vuepress 2.x 有许多不兼容的地方，一个一个踩坑替换过于麻烦 ，所以我记录下使用的插件。然后卸载 vuepress 1.x 依赖，再重新安装 vuepress 2.x 依赖。
 
 ```bash
 yarn add -D vuepress@next
@@ -60,9 +60,9 @@ echo '.cache' >> .gitignore
 
 1. 安装 ts : `yarn global add typescript`
 2. cd 到项目根目录
-3. 执行命令初始化为ts 项目：`tsc --init`，生成的`tsconfig.json`可以按需修改
-4. 所有js文件后缀改为ts
-5. 安装类型依赖。js 有大量的库是使用js写的，通过ts使用时会报类型缺失的错误。不错主流的库都提供了一份类型声明依赖，可以通过 `@types/xxx` 获取。比如：`@types/node`。如果你使用的js库没有提供类型声明，则需要你自己根据import 使用的内容来提供一份类型声明文件 `.d.ts`
+3. 执行命令初始化为 ts 项目：`tsc --init`，生成的`tsconfig.json`可以按需修改
+4. 所有 js 文件后缀改为 ts
+5. 安装类型依赖。js 有大量的库是使用 js 写的，通过 ts 使用时会报类型缺失的错误。主流的库基本都提供了类型声明依赖，可以通过 `@types/xxx` 获取。比如：`@types/node`。如果你使用的 js 库没有提供类型声明，则需要你自己根据 import 使用的内容来提供一份类型声明文件 `.d.ts`
 
 具体的迁移可以参考：
 
@@ -125,9 +125,9 @@ echo '.cache' >> .gitignore
 
 
 
-原插件feed 因为vuepress 插件api的变动无法正常使用，作者也很久没有维护了。
+原插件 feed 因为 vuepress 插件 api 的变动无法正常使用，作者也很久没有维护了。
 
-作为替代，基于官方插件`@vuepress/plugin-git`提供的页面更新时间数据，我自己实现了一个生成RSS的插件 `@stormbuf/vuepress-plugin-rss`。
+作为替代，基于官方插件`@vuepress/plugin-git`提供的页面更新时间数据，我实现了一个生成 RSS 的插件 `@stormbuf/vuepress-plugin-rss`。
 
 具体可以在 [https://github.com/stormbuf/vuepress-plugin-rss](https://github.com/stormbuf/vuepress-plugin-rss) 了解。
 
@@ -139,7 +139,7 @@ echo '.cache' >> .gitignore
 
 #### 百度统计
 
-在config.ts head 配置中添加百度统计提供的脚本。
+在 config.ts head 配置中添加百度统计提供的脚本。
 
 ```javascript
 head: [
@@ -173,9 +173,7 @@ import type { DefaultThemeOptions } from 'vuepress'
 ```
 
 
-
-
-导出的config 放入`defineUserConfig `函数中
+导出的 config 放入`defineUserConfig `函数中
 
 ```javascript
 export default defineUserConfig<DefaultThemeOptions>({})
@@ -184,14 +182,14 @@ export default defineUserConfig<DefaultThemeOptions>({})
 
 ### 归档组件改造
 
-原归档组件由于vuepress升级后，插件api和主题api的不兼容导致无法使用。
+原归档组件由于 vuepress 升级后，插件 api 和主题 api 的不兼容导致无法使用。
 
-原归档组件可以通过组件实例 this 直接获取到所有页面的信息。但是在vuepress 2.x 中就没这么方便了，最终我通过另一个方式迂回解决数据源的问题。
+原归档组件可以通过组件实例 `this` 直接获取到所有页面的信息。但是在 vuepress 2.x 中就没这么方便了，最终我通过另一个方式迂回获取数据源。
 
 **实现思路：**
 
 1. 基于官方插件`@vuepress/plugin-git`提供的页面更新时间数据
-2. 继承默认主题，通过 开发Hook `extendsPage`收集页面的信息和更新时间
+2. 继承默认主题，通过 开发 Hook `extendsPage`收集页面的信息和更新时间
 3. 在生命周期 Hook `onPrepared`中，使用Node API `writeTemp`将页面数据写入临时文件`storeData.ts`
 4. 归档组件通过命令：`import {archivesPageData} from '@temp/storeData'`获取页面数据
 
@@ -199,15 +197,15 @@ export default defineUserConfig<DefaultThemeOptions>({})
 
 
 
-归档组件写法也向vue3靠拢。添加了 ts 支持，添加了类型识别。不过暂时并未用vue3 的组合式api写法重写组件。
+归档组件写法也向 vue3 靠拢。添加了 ts 支持，添加了类型识别。不过暂时并未用 vue3 的组合式 api 写法重写组件。
 
 
 
 ## 后续
 
-评论功能由于Vssue 不支持vuepress 2.x 暂时恢复不了。
+评论功能由于 Vssue 不支持 vuepress 2.x 暂时恢复不了。
 
-后续打算封装 Ant Design of Vue Comment 组件，并整合vssue 里与 git 托管网站 issue 交互的功能实现自己的评论组件。
+后续打算封装 Ant Design of Vue Comment 组件，并整合 vssue 里与 git 托管网站 issue 交互的功能实现自己的评论组件。
 
-同时还打算继续添加 **newsletter**、**sitemap**功能。
+同时还打算继续添加 **newsletter**、**sitemap** 功能。
 
