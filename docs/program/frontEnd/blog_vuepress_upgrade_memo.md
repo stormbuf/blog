@@ -43,14 +43,14 @@ vue3:
 
 由于vuepress 1.x 与 vuepress 2.x 有许多不兼容的地方，一个一个踩坑替换过于麻烦 ，所以我记录下使用的插件。然后卸载 vuepress 1.x 的依赖，再重新安装vuepress 2.x 依赖。
 
-```Bash
+```bash
 yarn add -D vuepress@next
 ```
 
 
 vuepress 2.x 新增了一个默认的临时目录和缓存目录，所以需要添加到 `.gitignore` 文件中。
 
-```Bash
+```bash
 echo '.temp' >> .gitignore
 echo '.cache' >> .gitignore
 ```
@@ -70,7 +70,7 @@ echo '.cache' >> .gitignore
 
 下面是我使用的`tsconfig.json`
 
-```JSON
+```json
 {
   "compilerOptions": {
     // "incremental": true,                   /* 增量编译 提高编译速度*/
@@ -141,7 +141,7 @@ echo '.cache' >> .gitignore
 
 在config.ts head 配置中添加百度统计提供的脚本。
 
-```JavaScript
+```javascript
 head: [
     [
       'link', // 设置 favicon.ico，注意图片放在 public 文件夹下
@@ -166,7 +166,7 @@ head: [
 
 import 相关依赖：
 
-```JavaScript
+```javascript
 import { defineUserConfig } from 'vuepress'
 
 import type { DefaultThemeOptions } from 'vuepress'
@@ -177,7 +177,7 @@ import type { DefaultThemeOptions } from 'vuepress'
 
 导出的config 放入`defineUserConfig `函数中
 
-```JavaScript
+```javascript
 export default defineUserConfig<DefaultThemeOptions>({})
 ```
 
