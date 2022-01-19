@@ -46,6 +46,10 @@ export default defineUserConfig<DefaultThemeOptions>({
       {
         text: "分布式",
         link: "/program/distributed/"
+      },
+      {
+        text: "front-end",
+        link: "/program/frontEnd/"
       }
       ]
     },
