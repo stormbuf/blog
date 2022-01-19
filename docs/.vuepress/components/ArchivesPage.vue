@@ -3,13 +3,13 @@
     <div>
       <ul>
         <template v-for="(item, index) in postsList" :key="index">
-          <li
+          <div
             class="year"
             v-if="(year = getYear(index)) !== getYear(index - 1)"
             :key="index + postsLength"
           >
             <h2>{{ year }}</h2>
-          </li>
+          </div>
           <li>
             <router-link :to="item.path">
               <span>{{ getDate(item) }}</span>
