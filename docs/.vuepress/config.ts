@@ -50,12 +50,12 @@ export default defineUserConfig<DefaultThemeOptions>({
       {
         text: "front-end",
         link: "/program/frontEnd/"
+      },
+      {
+        text: "database",
+        link: "/db/"
       }
       ]
-    },
-    {
-      text: "database",
-      link: "/db/"
     },
     {
       text: "timeline",
