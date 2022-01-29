@@ -58,6 +58,10 @@ export default defineUserConfig<DefaultThemeOptions>({
       ]
     },
     {
+      text: "weekly",
+      link: "/weekly/"
+    },
+    {
       text: "timeline",
       link: "/archivesPage/"
     },
