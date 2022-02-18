@@ -20,6 +20,16 @@ meta:
 footer: © 2021 stormbuf's Blog. Powered by VuePress
 feed:
   enable: false
+head:
+  - - meta
+    - http-equiv: pragma
+      content: no-cache
+  - - meta
+    - http-equiv: Cache-Control
+      content: no-cache, must-revalidate
+  - - meta
+    - http-equiv: expires
+      content: 0
 ---
 
 ## 联系方式:
