@@ -34,7 +34,7 @@
 
 -   `[open] module <module>`: 声明一个模块，模块名称应全局唯一，不可重复。加上 `open` 关键词表示模块内的所有包都允许通过 Java 反射访问，模块声明体内不再允许使用 `opens` 语句。
 -   `requires [transitive] <module>` : 声明模块依赖，一次只能声明一个依赖，如果依赖多个模块，需要多次声明。加上 `transitive` 关键词表示传递依赖，比如模块 A 依赖模块 B，模块 B 传递依赖模块 C，那么模块 A 就会自动依赖模块 C，类似于 Maven。
-- `requires static [transitive] <module>`:声明静态模块依赖，
+- `requires static [transitive] <module>`:声明静态模块依赖，模块系统在编译时以及运行时验证模块的依赖关系。 有时希望在编译时模块依赖性是必需的，但在运行时是可选的。
 -   `exports <package> [to <module1>[, <module2>...]]`: 导出模块内的包（允许直接 `import` 使用），一次导出一个包，如果需要导出多个包，需要多次声明。如果需要定向导出（**仅允许指定模块`import`**），可以使用 `to` 关键词，后面加上模块列表（逗号分隔）。
 -   `opens <package> [to <module>[, <module2>...]]` : 开放模块内的包（允许通过 Java 反射访问），一次开放一个包，如果需要开放多个包，需要多次声明。如果需要定向开放（**仅允许指定模块通过反射使用**），可以使用 `to` 关键词，后面加上模块列表（逗号分隔）。
 -   `provides <interface | abstract class> with <class1>[, <class2> ...]`: 声明模块提供的 Java SPI 服务，一次可以声明多个服务实现类（逗号分隔）。
