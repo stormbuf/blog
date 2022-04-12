@@ -3,10 +3,10 @@ home: true
 heroImage: /img/me.png
 heroText: stormbuf's blog
 tagline:  🧑‍💻后端工程师|🍖肉食爱好者|🔍观察者
-actions:
-  - text: 开始浏览
-    link: /archivesPage/
-    type: primary
+# actions:
+#   - text: 开始浏览
+#     link: /archivesPage/
+#     type: primary
 features:
 - title: 一个解决问题的人
   details: 不要把自己局限在程序员，要把自己定位为一个解决问题的人，多尝试。
@@ -31,6 +31,7 @@ head:
     - http-equiv: expires
       content: 0
 ---
+<archivesPage></archivesPage>
 
 ## 联系方式:
 - E-mail: stormbuf@163.com
