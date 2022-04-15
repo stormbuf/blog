@@ -30,6 +30,11 @@ head:
   - - meta
     - http-equiv: expires
       content: 0
+  - - link
+    - rel: alternate
+      href: /rss.xml
+      title: stormbuf's blog
+      type: application/rss+xml
 ---
 <archivesPage></archivesPage>
 

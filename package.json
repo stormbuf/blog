@@ -31,7 +31,9 @@
   },
   "dependencies": {
     "@types/lodash.debounce": "^4.0.6",
+    "@vssue/api-github-v3": "^1.4.7",
     "shiki": "^0.10.0",
-    "stylus": "^0.56.0"
+    "stylus": "^0.56.0",
+    "vssue": "^1.4.8"
   }
 }
