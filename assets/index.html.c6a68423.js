@@ -1,0 +1,1 @@
+const e={key:"v-c9afc8f6",path:"/archives/",title:"timeline",lang:"en-US",frontmatter:{archivesPage:!0,title:"timeline",permalink:"/archives/",article:!1,sidebar:!1,feed:{enable:!1}},excerpt:"",headers:[],git:{updatedTime:164234999e4},filePathRelative:"archivesPage/README.md"};export{e as data};

@@ -1,0 +1,1 @@
+const e={key:"v-6edec4cd",path:"/program/db/",title:"MySQL",lang:"en-US",frontmatter:{feed:{enable:!1}},excerpt:"",headers:[],git:{updatedTime:1643266415e3},filePathRelative:"program/db/README.md"};export{e as data};

@@ -1,0 +1,1 @@
+const e={key:"v-37327ac0",path:"/HelloWorld.html",title:"hello world!",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1630048777e3},filePathRelative:"HelloWorld.md"};export{e as data};

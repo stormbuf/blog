@@ -1,0 +1,1 @@
+import{r,o,e as c}from"./app.edc637f8.js";import{_ as a}from"./plugin-vue_export-helper.21dcd24c.js";const n={};function s(t,_){const e=r("archivesPage");return o(),c(e)}var i=a(n,[["render",s]]);export{i as default};

@@ -1,0 +1,1 @@
+const e={key:"v-d707164e",path:"/program/frontEnd/",title:"front-end",lang:"en-US",frontmatter:{feed:{enable:!1}},excerpt:"",headers:[{level:2,title:"vuepress",slug:"vuepress",children:[]}],git:{updatedTime:1642584135e3},filePathRelative:"program/frontEnd/README.md"};export{e as data};
