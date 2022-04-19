@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /img/me.png
+# heroImage: /img/me.png
 heroText: stormbuf's blog
 tagline:  🧑‍💻后端工程师|🍖肉食爱好者|🔍观察者
 # actions:
@@ -36,6 +36,7 @@ head:
       title: stormbuf's blog
       type: application/rss+xml
 ---
+## 最近文章
 <archivesPage></archivesPage>
 
 ## 联系方式:
